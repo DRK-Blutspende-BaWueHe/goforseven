@@ -15,3 +15,6 @@ go get -v github.com/DRK-Blutspende-BaWueHe/goforseven/...
 ```
 
 ## Usage
+```
+import "github.com/DRK-Blutspende-BaWueHe/goforseven"
+```
