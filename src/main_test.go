@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/src/hl7model"
 	"testing"
+
+	gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/src/hl7model"
 )
 
 func TestMSH(t *testing.T) {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -11,6 +10,7 @@ import (
 	gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/src/hl7model"
 )
 
+/*
 func main() {
 
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -36,8 +36,7 @@ func main() {
 			}
 		}
 	}
-
-}
+}*/
 
 func ReadHL7File(filename string) (gofor7.HL7Message, error) {
 
