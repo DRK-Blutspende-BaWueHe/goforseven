@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	gofor7 "goforseven/src/hl7model"
+	gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/src/hl7model"
 )
 
 func main() {
