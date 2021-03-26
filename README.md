@@ -1,2 +1,2 @@
 # goforseven
-JÖ7 reader- and writer for golang
+HL-7 reader- and writer for golang
