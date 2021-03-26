@@ -1,4 +1,4 @@
-package main
+package hl7inout
 
 import (
 	"io/ioutil"
@@ -6,8 +6,12 @@ import (
 	"os"
 	"strings"
 	"time"
+	//gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/hl7inout"
+)
 
-	gofor7 "github.com/DRK-Blutspende-BaWueHe/goforseven/src/hl7model"
+const (
+	path      = "./hl7files"
+	pathWrite = path + "/WriteHL7"
 )
 
 /*
@@ -38,33 +42,33 @@ func main() {
 	}
 }*/
 
-func ReadHL7File(filename string) (gofor7.HL7Message, error) {
+func ReadHL7File(filename string) (HL7Message, error) {
 
 	message, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Println(err)
 	}
-	delimeter := gofor7.Delimeter{}
+	delimeter := Delimeter{}
 	delimeter.Parentlevel = "|"
 	delimeter.Childlevels = "^"
 	delimeter.CrLf = "\r"
-	messages, err := gofor7.GetMessagesFromString(string(message), delimeter)
+	messages, err := GetMessagesFromString(string(message), delimeter)
 	if err != nil {
 		log.Println(err)
 	}
-	hl7message, err := gofor7.GetHL7MessageFromMessages(messages)
+	hl7message, err := GetHL7MessageFromMessages(messages)
 	log.Println(hl7message.Header.Timestamp)
 
 	return hl7message, err
 }
 
-func WriteHL7File(hl7message gofor7.HL7Message, filename string) error {
+func WriteHL7File(hl7message HL7Message, filename string) error {
 
-	delimeter := gofor7.Delimeter{}
+	delimeter := Delimeter{}
 	delimeter.Parentlevel = "|"
 	delimeter.Childlevels = "^"
 	delimeter.CrLf = "\r"
-	hl7messages, err := gofor7.GetStringFromHL7Messages(hl7message, delimeter)
+	hl7messages, err := GetStringFromHL7Messages(hl7message, delimeter)
 	if err != nil {
 		log.Println(err)
 		return err

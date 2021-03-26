@@ -1,4 +1,4 @@
-package hl7model
+package hl7inout
 
 type HL7Message struct {
 	Header  MSH
