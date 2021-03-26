@@ -19,7 +19,7 @@ go get -v github.com/DRK-Blutspende-BaWueHe/goforseven/...
 import "github.com/DRK-Blutspende-BaWueHe/goforseven"
 ```
 
-To read a message 
+To read a ORM^R01 message 
 ```go
   hl7 := goforseven.Init25()
   
