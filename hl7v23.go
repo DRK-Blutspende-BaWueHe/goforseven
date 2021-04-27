@@ -8,25 +8,25 @@ type HL7Message struct {
 // MSH - message header segment
 // MSH|^~\&|||||20160414174306||ORU^R01|234057|P|2.3|||NE|NE||8859/1
 type MSH struct {
-	FieldSeparator            string `hl7:"MSH.1"` // 1
-	EncodingCharacter         string `hl7:"MSH.2"` // 2
-	SendingApplication        string `hl7:"MSH.3"`
-	SendingFacility           string `hl7:"MSH.4"`  // 4
-	ReceivingApplication      string `hl7:"MSH.5"`  // 5
-	ReceivingFacility         string `hl7:"MSH.6"`  // 6
-	Timestamp                 string `hl7:"MSH.7"`  // 7
-	Security                  string `hl7:"MSH.8"`  // 8	not used
-	MessageType               string `hl7:"MSH.9"`  // 9
-	MessageControlID          string `hl7:"MSH.10"` // 10
-	ProcessingID              string `hl7:"MSH.11"` // 11
-	VersionID                 string `hl7:"MSH.12"` // 12
-	SequenceNumber            string `hl7:"MSH.13"` // 13	not used
-	ContinuationPointer       string `hl7:"MSH.14"` // 14
-	AcceptAcknowledgment      string `hl7:"MSH.15"` // 15
-	ApplicationAcknowledgment string `hl7:"MSH.16"` // 16
-	CountryCode               string `hl7:"MSH.17"` // 17	not used
-	CharacterSet              string `hl7:"MSH.18"` // 18
-	Language                  string `hl7:"MSH.19"` // 19	not used
+	FieldSeparator            string
+	EncodingCharacter         string `hl7:"MSH.1"`
+	SendingApplication        string `hl7:"MSH.2"`
+	SendingFacility           string `hl7:"MSH.3"`
+	ReceivingApplication      string `hl7:"MSH.4"`
+	ReceivingFacility         string `hl7:"MSH.5"`
+	Timestamp                 string `hl7:"MSH.6"`
+	Security                  string `hl7:"MSH.7"`
+	MessageType               string `hl7:"MSH.8"`
+	MessageControlID          string `hl7:"MSH.9"`
+	ProcessingID              string `hl7:"MSH.10"`
+	VersionID                 string `hl7:"MSH.11"`
+	SequenceNumber            string `hl7:"MSH.12"`
+	ContinuationPointer       string `hl7:"MSH.13"`
+	AcceptAcknowledgment      string `hl7:"MSH.14"`
+	ApplicationAcknowledgment string `hl7:"MSH.15"`
+	CountryCode               string `hl7:"MSH.16"`
+	CharacterSet              string `hl7:"MSH.17"`
+	Language                  string `hl7:"MSH.18"`
 }
 
 // MSA - message acknowledgment segment
@@ -348,3 +348,33 @@ type PV1 struct {
 	ConsultingDoctor        string `hl7:"PV1.1.8"` // 1.9		not used
 	HospitalService         string `hl7:"PV1.1.9"` // 1.10
 }
+
+//V2.3 valid value types
+const (
+	AD  string = "AD"  //Address
+	CE  string = "CE"  //Coded Entry
+	CF  string = "CF"  //Coded Element With Formatted Values
+	CK  string = "AD"  //Composite ID With Check Digit
+	CN  string = "CN"  //Composite ID And Name
+	CP  string = "CP"  //Composite Price
+	CX  string = "CX"  //Extended Composite ID With Check Digit
+	DT  string = "DT"  //Date
+	ED  string = "ED"  //Encapsulated Data
+	FT  string = "FT"  //Formatted Text (Display)
+	ID  string = "ID"  //Coded Value
+	MO  string = "MO"  //Money
+	NM  string = "NM"  //Numeric
+	PN  string = "PN"  //Person Name
+	RP  string = "RP"  //Reference Pointer
+	SN  string = "SN"  //Structured Numeric
+	ST  string = "ST"  //String Data.
+	TM  string = "TM"  //Time
+	TN  string = "TN"  //Telephone Number
+	TS  string = "TS"  //Time Stamp (Date & Time)
+	TX  string = "TX"  //Text Data (Display)
+	XAD string = "XAD" //Extended Address
+	XCN string = "XCN" //Extended Composite Name And Number For Persons
+	XON string = "XON" //Extended Composite Name And Number For Organizations
+	XPN string = "XPN" //Extended Person Name
+	XTN string = "XTN" //Extended Telecommunications Number
+)
