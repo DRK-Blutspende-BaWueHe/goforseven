@@ -33,6 +33,13 @@ func GetHL7MessageFromMessages(messages []string) (HL7Message, error) {
 		switch strings.Split(message, delimeterwork.Parentlevel)[0] {
 		case "MSH":
 			msh := MSH{}
+
+			//check first char after MSH segment name to get field separator, field separator isn't separated by itself
+			msh.FieldSeparator = string(message[3])
+			if len(msh.FieldSeparator) > 0 {
+				delimeterwork.Parentlevel = msh.FieldSeparator
+			}
+
 			err := unmarshal(message, &msh)
 			if err != nil {
 				log.Println(err)
