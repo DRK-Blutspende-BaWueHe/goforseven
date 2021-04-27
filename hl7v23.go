@@ -348,3 +348,33 @@ type PV1 struct {
 	ConsultingDoctor        string `hl7:"PV1.1.8"` // 1.9		not used
 	HospitalService         string `hl7:"PV1.1.9"` // 1.10
 }
+
+//V2.3 valid value types
+const (
+	AD  string = "AD"  //Address
+	CE  string = "CE"  //Coded Entry
+	CF  string = "CF"  //Coded Element With Formatted Values
+	CK  string = "AD"  //Composite ID With Check Digit
+	CN  string = "CN"  //Composite ID And Name
+	CP  string = "CP"  //Composite Price
+	CX  string = "CX"  //Extended Composite ID With Check Digit
+	DT  string = "DT"  //Date
+	ED  string = "ED"  //Encapsulated Data
+	FT  string = "FT"  //Formatted Text (Display)
+	ID  string = "ID"  //Coded Value
+	MO  string = "MO"  //Money
+	NM  string = "NM"  //Numeric
+	PN  string = "PN"  //Person Name
+	RP  string = "RP"  //Reference Pointer
+	SN  string = "SN"  //Structured Numeric
+	ST  string = "ST"  //String Data.
+	TM  string = "TM"  //Time
+	TN  string = "TN"  //Telephone Number
+	TS  string = "TS"  //Time Stamp (Date & Time)
+	TX  string = "TX"  //Text Data (Display)
+	XAD string = "XAD" //Extended Address
+	XCN string = "XCN" //Extended Composite Name And Number For Persons
+	XON string = "XON" //Extended Composite Name And Number For Organizations
+	XPN string = "XPN" //Extended Person Name
+	XTN string = "XTN" //Extended Telecommunications Number
+)
