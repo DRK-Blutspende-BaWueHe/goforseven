@@ -131,9 +131,28 @@ func TestNTE(t *testing.T) {
 
 }
 
+func TestPV1(t *testing.T) {
+	PV1stringSource := `PV1|^^^^^^^^^||||||||||||||||||case0815`
+	delimeter := Delimeter{}
+	delimeter.Parentlevel = "|"
+	delimeter.Childlevels = "^"
+	delimeter.CrLf = "\r"
+	messages, err := GetMessagesFromString(PV1stringSource, delimeter)
+	if err != nil {
+		t.Errorf("TestPV1 returned err: %v", err)
+	}
+	hl7messageSource, err := GetHL7MessageFromMessages(messages)
+	PV1stringCreated, err := GetStringFromHL7Messages(hl7messageSource, delimeter)
+	if PV1stringSource != PV1stringCreated {
+		t.Errorf(`TestPV1 wrong PV1 want: %v get: %v`, PV1stringSource, PV1stringCreated)
+	}
+
+}
+
 func TestComplett(t *testing.T) {
 	MSHstringSource := `MSH|^~\&|CIT|LAB|HL7_HOST|HL7_OFFICE|20120119180929||ORU^R01|248914|P|2.3|||NE|NE||8859/1`
 	PIDstringSource := `PID|1||400411|400412|Boop^Elizabeth||19301213|F`
+	PV1stringSource := `PV1|^^^^^^^^^||||||||||||||||||case0815`
 	NTEstringSource := `NTE||L|1st·comment·on·patient·/·sample·20020604101`
 	ORCstringSource := `ORC|RE|180027|||||^^^^^R||20120119171240|||Thanh`
 	OBRstringSource := `OBR|1|180027||ALL||20120119171240|||||||^^^||S1^^^^^^P`
@@ -145,6 +164,7 @@ func TestComplett(t *testing.T) {
 	delimeter.Childlevels = "^"
 	delimeter.CrLf = "\r"
 	ComplettstringSource := fmt.Sprintf("%s%s%s", MSHstringSource, delimeter.CrLf, PIDstringSource)
+	ComplettstringSource = fmt.Sprintf("%s%s%s", ComplettstringSource, delimeter.CrLf, PV1stringSource)
 	ComplettstringSource = fmt.Sprintf("%s%s%s", ComplettstringSource, delimeter.CrLf, NTEstringSource)
 	ComplettstringSource = fmt.Sprintf("%s%s%s", ComplettstringSource, delimeter.CrLf, ORCstringSource)
 	ComplettstringSource = fmt.Sprintf("%s%s%s", ComplettstringSource, delimeter.CrLf, OBRstringSource)
@@ -153,12 +173,12 @@ func TestComplett(t *testing.T) {
 	ComplettstringSource = fmt.Sprintf("%s%s%s", ComplettstringSource, delimeter.CrLf, ORCstringSource)
 	messages, err := GetMessagesFromString(ComplettstringSource, delimeter)
 	if err != nil {
-		t.Errorf("TestPID returned err: %v", err)
+		t.Errorf("Test returned err: %v", err)
 	}
 	hl7messageSource, err := GetHL7MessageFromMessages(messages)
 	ComplettstringCreated, err := GetStringFromHL7Messages(hl7messageSource, delimeter)
 	if ComplettstringSource != ComplettstringCreated {
-		t.Errorf(`TestPID wrong PID want: %v get: %v`, ComplettstringSource, ComplettstringCreated)
+		t.Errorf(`Test wrong want: %v get: %v`, ComplettstringSource, ComplettstringCreated)
 	}
 
 }

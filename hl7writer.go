@@ -86,12 +86,12 @@ func GetStringFromHL7Messages(hl7message HL7Message, delimeter Delimeter) (strin
 					messagestring, err = getStringFromHL7Message(&hla7recordwrite)
 				}
 			case "ZPE":
-				hla7recordwrite, ok := hl7record.(PCD)
+				hla7recordwrite, ok := hl7record.(ZPE)
 				if ok {
 					messagestring, err = getStringFromHL7Message(&hla7recordwrite)
 				}
 			case "PV1":
-				hla7recordwrite, ok := hl7record.(PCD)
+				hla7recordwrite, ok := hl7record.(PV1)
 				if ok {
 					messagestring, err = getStringFromHL7Message(&hla7recordwrite)
 				}

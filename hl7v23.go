@@ -347,6 +347,7 @@ type PV1 struct {
 	ReferringDoctor         string `hl7:"PV1.1.7"` // 1.8		not used
 	ConsultingDoctor        string `hl7:"PV1.1.8"` // 1.9		not used
 	HospitalService         string `hl7:"PV1.1.9"` // 1.10
+	PatientCaseNumber       string `hl7:"PV1.19"`  // 19
 }
 
 //V2.3 valid value types
